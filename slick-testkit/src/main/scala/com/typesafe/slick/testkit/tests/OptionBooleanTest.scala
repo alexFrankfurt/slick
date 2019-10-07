@@ -4,8 +4,7 @@ import com.typesafe.slick.testkit.util.{AsyncTest, JdbcTestDB}
 import slick.jdbc.OracleProfile
 
 class OptionBooleanTest extends AsyncTest[JdbcTestDB] {
-  lazy val oracleProfile = tdb.profile.asInstanceOf[OracleProfile]
-  import oracleProfile.api._
+  import tdb.profile.api._
 
   def testFilterWithOption = {
     class A(tag: Tag) extends Table[(Int, Option[Boolean], Option[Int])](tag, "a") {
