@@ -81,9 +81,9 @@ object Settings {
         libraryDependencies += "org.scala-lang" % "scala-compiler" % scalaVersion.value % "provided",
         (Compile / packageSrc / mappings) ++= (MacroConfig / packageSrc / mappings).value,
         (Compile / packageBin / mappings) ++= (MacroConfig / packageBin / mappings).value,
-        OsgiKeys.exportPackage := Seq("slick", "slick.*", "scala.slick", "scala.slick.*", "oracle.sql", "oracle.core.lmx",
+        OsgiKeys.exportPackage := Seq("slick", "slick.*", "scala.slick", "scala.slick.*", "scala.collection.compat", "oracle.sql", "oracle.core.lmx",
           "oracle.jdbc", "oracle.jdbc.aq", "oracle.i18n.text.converter", "oracle.jdbc.dcn", "org.postgresql.util"),
-        OsgiKeys.importPackage := Seq(Osgi.osgiImport("scala*", scalaVersion.value), "*"),
+        OsgiKeys.importPackage := Seq(Osgi.osgiImport("!scala.collection.compat,scala*", scalaVersion.value), "*"),
         OsgiKeys.privatePackage := Nil
       )
   )
