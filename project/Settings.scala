@@ -269,7 +269,7 @@ object Settings {
   def compilerDependencySetting(config: String) =
     libraryDependencies ++= {
       if (sys.props("scala.home.local") != null || !scalaVersion.value.startsWith("2.")) Nil
-      else Seq("org.scala-lang" % "scala-compiler" % scalaVersion.value % config)
+      else Seq("org.scala-lang" % "scala3-compiler_3" % scalaVersion.value % config)
     }
 
   def publishedScalaSettings = Seq(

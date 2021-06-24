@@ -4,6 +4,7 @@ target/
 /test-dbs/*_*
 /test-dbs/databases.properties
 /test-dbs/testkit.conf
+!/test-dbs/testkit.github-actions.conf
 /test-output/
 *.log
 *.iml
@@ -25,3 +26,6 @@ doc/capabilities.md
 /secrets.tar
 /publish-settings.sbt
 /.bsp/
+.bloop/
+/.metals/
+metals.sbt

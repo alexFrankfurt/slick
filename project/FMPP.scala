@@ -26,15 +26,17 @@ object FMPP {
   val FmppConfig = config("fmpp").hide
   def fmppTask = Def.task {
     val s = streams.value
-    val output = sourceManaged.value
-    val fmppSrc = sourceDirectory.value / "scala"
+    val output = (Compile / sourceManaged).value
+    val fmppSrc = (Compile / sourceDirectory).value / "scala"
     val inFiles = (fmppSrc ** "*.fm").get.toSet
+    val fmppRunner = (fmpp / runner).value
+    val fmppClasspath = (FmppConfig / fullClasspath).value
     val cachedFun = FileFunction.cached(s.cacheDirectory / "fmpp", inStyle = FilesInfo.lastModified, outStyle = FilesInfo.exists) { (in: Set[File]) =>
       IO.delete((output ** "*.scala").get)
       val args = "--expert" :: "-q" :: "-S" :: fmppSrc.getPath :: "-O" :: output.getPath ::
       "--replace-extensions=fm, scala" :: "-M" :: "execute(**/*.fm), ignore(**/*)" :: Nil
 
-      val errors = (fmpp / runner).value.run("fmpp.tools.CommandLine", (FmppConfig / fullClasspath).value.files, args, s.log)
+      val errors = fmppRunner.run("fmpp.tools.CommandLine", fmppClasspath.files, args, s.log)
 
       errors match {
         case Success(value) => value

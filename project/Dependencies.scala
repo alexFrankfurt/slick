@@ -8,12 +8,12 @@ object Dependencies {
 
   val scalaVersions = Seq("2.13.5", "3.0.0") // When updating these also update .travis.yml and appveyor.yml
 
-  val slf4j = "org.slf4j" % "slf4j-api" % "1.7.30"
+  val slf4j = "org.slf4j" % "slf4j-api" % "1.7.31"
   val typesafeConfig = "com.typesafe" % "config" % "1.4.1"
   val reactiveStreamsVersion = "1.0.3"
   val reactiveStreams = "org.reactivestreams" % "reactive-streams" % reactiveStreamsVersion
   val reactiveStreamsTCK = "org.reactivestreams" % "reactive-streams-tck" % reactiveStreamsVersion
-  val scalaCollectionCompat = "org.scala-lang.modules" %% "scala-collection-compat" % "2.4.3"
+  val scalaCollectionCompat = "org.scala-lang.modules" %% "scala-collection-compat" % "2.4.4"
 
 
   def mainDependencies = Seq(slf4j, typesafeConfig, reactiveStreams)
@@ -39,10 +39,11 @@ object Dependencies {
     sqlServer,
     "org.apache.derby" % "derby" % "10.14.2.0",
     "org.xerial" % "sqlite-jdbc" % "3.34.0",
-    "org.hsqldb" % "hsqldb" % "2.5.1",
-    "org.postgresql" % "postgresql" % "42.2.19",
-    "mysql" % "mysql-connector-java" % "8.0.16",
+    "org.hsqldb" % "hsqldb" % "2.5.2",
+    "org.postgresql" % "postgresql" % "42.2.22",
+    "mysql" % "mysql-connector-java" % "8.0.25",
     "net.sourceforge.jtds" % "jtds" % "1.3.1",
+    "com.oracle.database.jdbc.debug" % "ojdbc8_g" % "21.1.0.0"
   )
 
   val paxExamVersion = "4.13.1"
