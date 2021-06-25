@@ -127,6 +127,7 @@ lazy val slick =
       name := "Slick",
       description := "Scala Language-Integrated Connection Kit",
       libraryDependencies ++= Dependencies.mainDependencies,
+      libraryDependencies ++= (if (scalaVersion.value.startsWith("2.")) Seq("org.scala-lang" % "scala-reflect" % scalaVersion.value) else Nil),
       scaladocSourceUrl("slick"),
       Compile / doc / scalacOptions ++= Seq(
         "-doc-root-content", "scaladoc-root.txt"
